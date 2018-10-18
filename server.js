@@ -38,8 +38,8 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db) });
 
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) });
 
-app.listen(3000, ()=> {
-	console.log('aplicativo está rodando no port:3000.');
+app.listen(process.env.PORT || 3000, ()=> {
+	console.log(`aplicativo está rodando no ${process.env.PORT}.`);
 });
 /* Planejamento do aplicativo, Tente sempre planejar antes de começar.
 response = this is working
