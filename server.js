@@ -23,9 +23,10 @@ app.use(cors());
 
 app.get('/', (request, response) => {
 	//exSelect.
-	db.select('*').from('usuarios').orderBy('postagens', 'desc').then(data => {
+	/*db.select('*').from('usuarios').orderBy('postagens', 'desc').then(data => {
 	response.send(data);
-	});
+	});*/
+	response.send('Server funcionando');
 });
 
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) }  );
