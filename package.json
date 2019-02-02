@@ -1,6 +1,6 @@
 {
   "name": "smart-brain-api",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "smartbrain-server",
   "main": "index.js",
   "scripts": {
@@ -12,13 +12,17 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "clarifai": "^2.8.1",
+    "cloudinary": "^1.13.2",
     "cors": "^2.8.4",
     "express": "^4.16.3",
+    "express-form-data": "^2.0.7",
+    "jsonwebtoken": "^8.4.0",
     "knex": "^0.15.2",
+    "morgan": "^1.9.1",
     "pg": "^7.5.0",
-    "nodemon": "^1.18.4"
+    "redis": "^2.8.0"
   },
   "devDependencies": {
-    
+    "nodemon": "^1.18.4"
   }
 }

@@ -1,7 +1,7 @@
 const clarifai = require('clarifai');
 
 const app = new Clarifai.App({
-  apiKey: 'cf40f23ec9e34893b9fd257757e43709'
+  apiKey: process.env.CLARIFAI_APP_KEY
 });
 
 const handleApiCall = (req, res) => {
@@ -20,7 +20,7 @@ const handleImage = (req, res, db) => {
 	.returning('postagens')
 	.then(post => {
 		if (post.length) {
-		res.json(post);
+			res.json(post);
 		} else {
 			res.status(400).json('Id incorreto.');
 		}

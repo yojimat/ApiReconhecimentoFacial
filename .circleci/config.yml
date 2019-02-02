@@ -1,0 +1,38 @@
+version: 2
+jobs:
+  nodeServerApiRF:
+    docker:
+      - image: circleci/node:8.9
+        environment:
+          POSTGRES_URI: postgres://vinicius:secret@postgres:5432/smart-brain-docker
+          REDIS_URI: redis://redis:6379
+      - image: circleci/postgres:9.46
+        environment:
+          POSTGRES_USER: vinicius
+          POSTGRES_PASSWORD: secret
+          POSTGRES_DB: smart-brain-docker
+          POSTGRES_HOST: postgres
+      - image: circleci/redis:5.0.2
+    working_directory: ~/serverApiRF
+    environment:
+      TZ: "America/Sao_Paulo"
+    branches:
+      only:
+        - master 
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-server{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-server
+      - run: 
+          name: Start do Server
+          command: |
+            echo "npm starting"
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-server{{ checksum "package.json" }}
+      # run build
+      - run: CI=true npm start
